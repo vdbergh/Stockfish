@@ -350,7 +350,8 @@ void Thread::search() {
   multiPV = std::min(multiPV, rootMoves.size());
   ttHitAverage = TtHitAverageWindow * TtHitAverageResolution / 2;
 
-  int ct = int(Options["Contempt"]) * PawnValueEg / 100; // From centipawns
+  //  int ct = int(Options["Contempt"]) * PawnValueEg / 100; // From centipawns
+  int ct=0;
 
   // In analysis mode, adjust contempt in accordance with user preference
   if (Limits.infinite || Options["UCI_AnalyseMode"])
@@ -409,7 +410,8 @@ void Thread::search() {
               beta  = std::min(prev + delta, VALUE_INFINITE);
 
               // Adjust contempt based on root move's previousScore (dynamic contempt)
-              int dct = ct + (113 - ct / 2) * prev / (abs(prev) + 147);
+	      //              int dct = ct + (113 - ct / 2) * prev / (abs(prev) + 147);
+	      int dct=0;
 
               contempt = (us == WHITE ?  make_score(dct, dct / 2)
                                       : -make_score(dct, dct / 2));
