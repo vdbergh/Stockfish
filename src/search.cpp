@@ -35,6 +35,12 @@
 #include "uci.h"
 #include "syzygy/tbprobe.h"
 
+int tempo_boost_mg=-200;
+int tempo_boost_eg=-700;
+
+TUNE(SetRange(-2800,2400),tempo_boost_mg,SetRange(-2800,1200),tempo_boost_eg);
+  
+
 namespace Search {
 
   LimitsType Limits;
@@ -363,7 +369,7 @@ void Thread::search() {
   // Evaluation score is from the white point of view
   //  contempt = (us == WHITE ?  make_score(ct, ct / 2)
   //                        : -make_score(ct, ct / 2));
-  contempt =  make_score(ct, ct / 2);
+  contempt =  make_score(tempo_boost_mg/100, tempo_boost_eg/100); // stochastic rounding would be nice
 
   int searchAgainCounter = 0;
 
