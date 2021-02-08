@@ -361,8 +361,9 @@ void Thread::search() {
           : ct;
 
   // Evaluation score is from the white point of view
-  contempt = (us == WHITE ?  make_score(ct, ct / 2)
-                          : -make_score(ct, ct / 2));
+  //  contempt = (us == WHITE ?  make_score(ct, ct / 2)
+  //                        : -make_score(ct, ct / 2));
+  contempt =  make_score(ct, ct / 2);
 
   int searchAgainCounter = 0;
 
@@ -409,10 +410,10 @@ void Thread::search() {
               beta  = std::min(prev + delta, VALUE_INFINITE);
 
               // Adjust contempt based on root move's previousScore (dynamic contempt)
-              int dct = ct + (113 - ct / 2) * prev / (abs(prev) + 147);
+	      //              int dct = ct + (113 - ct / 2) * prev / (abs(prev) + 147);
 
-              contempt = (us == WHITE ?  make_score(dct, dct / 2)
-                                      : -make_score(dct, dct / 2));
+	      //              contempt = (us == WHITE ?  make_score(dct, dct / 2)
+              //                        : -make_score(dct, dct / 2));
           }
 
           // Start with a small aspiration window and, in the case of a fail
