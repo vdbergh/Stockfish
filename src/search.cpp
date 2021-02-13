@@ -89,26 +89,26 @@ namespace {
     return VALUE_DRAW + Value(2 * (thisThread->nodes & 1) - 1);
   }
 
-  int risk1 = 10;
-  int risk2 = 0;
+  //  int risk1 = 13;
+  //  int risk2 = 22;
   // PruningSafety[rootColor][cut type] : pruning safety table
-  int PruningSafety[2][2] = {
-     {  10  ,   0 },    // ~rootColor : alpha, beta
-     {   0  ,  10 }     //  rootColor : alpha, beta
+  const int PruningSafety[2][2] = {
+     {  13  ,  22 },    // ~rootColor : alpha, beta
+     {  22  ,  13 }     //  rootColor : alpha, beta
   };
   enum CutType { ALPHA, BETA };
   template <CutType T> 
   int pruning_safety(int ply) {
       
       // Force the diagonal shape of the matrix for tuning
-      PruningSafety[0][0] = PruningSafety[1][1] = risk1;
-      PruningSafety[0][1] = PruningSafety[1][0] = risk2;
+    //  PruningSafety[0][0] = PruningSafety[1][1] = risk1;
+    //  PruningSafety[0][1] = PruningSafety[1][0] = risk2;
   
       return PruningSafety[(ply & 1) == 0][T];
   }
   
-  TUNE(SetRange(-128, 128), risk1);
-  TUNE(SetRange(-128, 128), risk2);
+  //  TUNE(SetRange(-128, 128), risk1);
+  //  TUNE(SetRange(-128, 128), risk2);
 
   // Skill structure is used to implement strength limit
   struct Skill {
