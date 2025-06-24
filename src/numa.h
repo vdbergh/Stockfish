@@ -16,6 +16,10 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Ruin master
+*/
+
 #ifndef NUMA_H_INCLUDED
 #define NUMA_H_INCLUDED
 
