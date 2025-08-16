@@ -1,3 +1,9 @@
-MPV 32 is best
+Sadly the following test failed...
 
-Bench: 3629755
+VSTC (0.05+0.005 th1) was rejected:
+LLR: -18.02 (-2.94,2.94) <0.00,40.00>
+Total: 1378 W: 577 L: 577 D: 224
+Ptnml(0-2): 0, 0, 689, 0, 0
+https://fishtest.ddns.net/tests/view/689c9910eb5d6a8156b9cff5
+
+No functional change
